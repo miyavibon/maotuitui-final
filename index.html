@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>毛腿腿浪愛幸福協會 - 讓愛重生</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Noto Sans TC', 'Quicksand', sans-serif;
+      background-color: #fffcf9;
+      color: #5d4037;
+    }
+    .font-rounded {
+      font-family: 'Quicksand', 'Noto Sans TC', sans-serif;
+    }
+    /* 主色：櫻花粉 */
+    .bg-sakura { background-color: #f3a6b1; }
+    .text-sakura { color: #f3a6b1; }
+    .border-sakura { border-color: #f3a6b1; }
+    
+    /* 輔助色：含羞草黃 */
+    .bg-mimosa { background-color: #fce8a4; }
+    .text-mimosa { color: #fce8a4; }
+    .border-mimosa { border-color: #fce8a4; }
+
+    .bg-cream { background-color: #fffcf9; }
+    
+    /* 修正原本遺留的類別名稱以保持相容性，但改為新色 */
+    .bg-sage { background-color: #f3a6b1; }
+    .text-sage { color: #f3a6b1; }
+    .border-sage { border-color: #f3a6b1; }
+    .bg-beige { background-color: #fce8a4; }
+    
+    .wave-divider {
+      position: relative;
+      width: 100%;
+      height: 50px;
+      background-repeat: repeat-x;
+    }
+    
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #fffcf9; }
+    ::-webkit-scrollbar-thumb { background: #f3a6b1; border-radius: 10px; }
+    
+    .organic-radius { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+    .organic-radius-reverse { border-radius: 30% 70% 70% 30% / 50% 60% 40% 50%; }
+
+    /* Button Hover Effects */
+    .btn-hover-mimosa:hover {
+      background-color: #fce8a4;
+      color: #5d4037;
+      transform: translateY(-2px);
+    }
+  </style>
+<script type="importmap">
+{
+  "imports": {
+    "lucide-react": "https://esm.sh/lucide-react@^0.563.0",
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "react": "https://esm.sh/react@^19.2.4",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "firebase/app": "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js",
+    "firebase/firestore": "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js",
+    "firebase/auth": "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js",
+    "firebase/storage": "https://www.gstatic.com/firebasejs/10.8.0/firebase-storage.js",
+    "firebase/": "https://esm.sh/firebase@^12.8.0/"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body>
+  <div id="root"></div>
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>
