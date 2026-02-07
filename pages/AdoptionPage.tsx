@@ -77,7 +77,7 @@ const AdoptionPage: React.FC<AdoptionPageProps> = ({ dogs, isAdmin }) => {
           {isAdmin && (
             <button 
               onClick={() => { setEditDog({}); setIsModalOpen(true); }}
-              className="flex items-center bg-sage text-white px-6 py-3 rounded-full font-bold shadow-lg hover:bg-sage/90 transition-all"
+              className="flex items-center bg-sakura text-white px-6 py-3 rounded-full font-bold shadow-lg hover:bg-sakura/90 transition-all"
             >
               <Plus className="mr-2" size={20} /> 新增待認養毛孩
             </button>
@@ -92,7 +92,7 @@ const AdoptionPage: React.FC<AdoptionPageProps> = ({ dogs, isAdmin }) => {
                 <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                   <button 
                     onClick={() => setSelectedDog(dog)}
-                    className="bg-white text-sage px-6 py-2 rounded-full font-bold shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-transform"
+                    className="bg-white text-sakura px-6 py-2 rounded-full font-bold shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-transform"
                   >
                     查看詳情
                   </button>
@@ -104,8 +104,8 @@ const AdoptionPage: React.FC<AdoptionPageProps> = ({ dogs, isAdmin }) => {
                   </div>
                 )}
                 <div className="absolute bottom-4 left-4">
-                   <span className="bg-white/90 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-sage shadow-sm">
-                    {dog.gender} • {dog.age}
+                   <span className={`px-3 py-1 rounded-full text-xs font-bold shadow-sm ${dog.gender === '女生' ? 'bg-pink-100/90 text-pink-600' : 'bg-blue-100/90 text-blue-600'}`}>
+                    {dog.gender === '女生' ? '女生' : '男生'} • {dog.age}
                   </span>
                 </div>
               </div>
@@ -115,7 +115,7 @@ const AdoptionPage: React.FC<AdoptionPageProps> = ({ dogs, isAdmin }) => {
                 <div className="mt-auto">
                    <button 
                     onClick={() => setSelectedDog(dog)}
-                    className="w-full py-2 border-2 border-sage/30 text-sage rounded-full font-bold hover:bg-sage hover:text-white transition-all text-sm"
+                    className="w-full py-2 border-2 border-sakura/30 text-sakura rounded-full font-bold hover:bg-sakura hover:text-white transition-all text-sm"
                   >
                     閱讀牠的故事
                   </button>
@@ -130,7 +130,7 @@ const AdoptionPage: React.FC<AdoptionPageProps> = ({ dogs, isAdmin }) => {
       {selectedDog && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
           <div className="bg-white w-full max-w-4xl rounded-[3rem] overflow-hidden shadow-2xl relative max-h-[90vh] overflow-y-auto">
-            <button onClick={() => setSelectedDog(null)} className="absolute top-6 right-6 p-2 bg-cream text-gray-500 rounded-full hover:text-sage transition-colors z-10">
+            <button onClick={() => setSelectedDog(null)} className="absolute top-6 right-6 p-2 bg-cream text-gray-500 rounded-full hover:text-sakura transition-colors z-10">
               <X size={24} />
             </button>
             <div className="flex flex-col md:flex-row">
@@ -139,16 +139,18 @@ const AdoptionPage: React.FC<AdoptionPageProps> = ({ dogs, isAdmin }) => {
               </div>
               <div className="md:w-1/2 p-8 md:p-12">
                 <div className="flex items-center space-x-2 mb-4">
-                  <span className="bg-sage/10 text-sage px-3 py-1 rounded-full text-sm font-bold">{selectedDog.gender}</span>
+                  <span className={`px-3 py-1 rounded-full text-sm font-bold ${selectedDog.gender === '女生' ? 'bg-pink-100 text-pink-600' : 'bg-blue-100 text-blue-600'}`}>
+                    {selectedDog.gender === '女生' ? '女生' : '男生'}
+                  </span>
                   <span className="bg-earth/10 text-earth px-3 py-1 rounded-full text-sm font-bold">{selectedDog.age}</span>
                 </div>
                 <h2 className="text-4xl font-bold text-gray-800 mb-6">{selectedDog.name} 的故事</h2>
-                <div className="prose prose-sage text-gray-600 leading-loose whitespace-pre-line mb-8">
+                <div className="prose prose-sakura text-gray-600 leading-loose whitespace-pre-line mb-8">
                   {selectedDog.story}
                 </div>
-                <div className="bg-beige p-6 rounded-3xl border border-sage/10">
+                <div className="bg-mimosa/20 p-6 rounded-3xl border border-sakura/10">
                   <div className="flex items-start">
-                    <Info className="text-sage mr-3 flex-shrink-0 mt-1" size={20} />
+                    <Info className="text-sakura mr-3 flex-shrink-0 mt-1" size={20} />
                     <div className="text-sm text-gray-600">
                       <p className="font-bold mb-1">認養小叮嚀</p>
                       <p>喜歡 {selectedDog.name} 嗎？請先閱讀認養須知，確認符合條件後，私訊 FB「毛腿腿認養團」提出申請。</p>
@@ -169,24 +171,24 @@ const AdoptionPage: React.FC<AdoptionPageProps> = ({ dogs, isAdmin }) => {
             <div className="space-y-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">毛孩名稱</label>
-                <input required type="text" value={editDog?.name || ''} onChange={e => setEditDog({...editDog, name: e.target.value})} className="w-full px-4 py-2 rounded-xl border border-gray-200 focus:ring-2 focus:ring-sage outline-none" />
+                <input required type="text" value={editDog?.name || ''} onChange={e => setEditDog({...editDog, name: e.target.value})} className="w-full px-4 py-2 rounded-xl border border-gray-200 focus:ring-2 focus:ring-sakura outline-none" />
               </div>
               <div className="flex space-x-4">
                 <div className="flex-1">
                   <label className="block text-sm font-medium text-gray-700 mb-1">性別</label>
-                  <select value={editDog?.gender || '男生'} onChange={e => setEditDog({...editDog, gender: e.target.value as any})} className="w-full px-4 py-2 rounded-xl border border-gray-200 focus:ring-2 focus:ring-sage outline-none">
+                  <select value={editDog?.gender || '男生'} onChange={e => setEditDog({...editDog, gender: e.target.value as any})} className="w-full px-4 py-2 rounded-xl border border-gray-200 focus:ring-2 focus:ring-sakura outline-none">
                     <option value="男生">男生</option>
                     <option value="女生">女生</option>
                   </select>
                 </div>
                 <div className="flex-1">
                   <label className="block text-sm font-medium text-gray-700 mb-1">年齡 (例如: 3歲)</label>
-                  <input required type="text" value={editDog?.age || ''} onChange={e => setEditDog({...editDog, age: e.target.value})} className="w-full px-4 py-2 rounded-xl border border-gray-200 focus:ring-2 focus:ring-sage outline-none" />
+                  <input required type="text" value={editDog?.age || ''} onChange={e => setEditDog({...editDog, age: e.target.value})} className="w-full px-4 py-2 rounded-xl border border-gray-200 focus:ring-2 focus:ring-sakura outline-none" />
                 </div>
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">故事/簡述</label>
-                <textarea rows={4} value={editDog?.story || ''} onChange={e => setEditDog({...editDog, story: e.target.value})} className="w-full px-4 py-2 rounded-xl border border-gray-200 focus:ring-2 focus:ring-sage outline-none"></textarea>
+                <textarea rows={4} value={editDog?.story || ''} onChange={e => setEditDog({...editDog, story: e.target.value})} className="w-full px-4 py-2 rounded-xl border border-gray-200 focus:ring-2 focus:ring-sakura outline-none"></textarea>
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">上傳圖片</label>
@@ -201,7 +203,7 @@ const AdoptionPage: React.FC<AdoptionPageProps> = ({ dogs, isAdmin }) => {
             </div>
             <div className="flex space-x-4 mt-8">
               <button disabled={isSubmitting} type="button" onClick={() => setIsModalOpen(false)} className="flex-1 py-3 bg-gray-100 text-gray-600 rounded-xl font-bold hover:bg-gray-200 transition-colors">取消</button>
-              <button disabled={isSubmitting} type="submit" className="flex-1 py-3 bg-sage text-white rounded-xl font-bold hover:bg-sage/90 transition-colors flex items-center justify-center">
+              <button disabled={isSubmitting} type="submit" className="flex-1 py-3 bg-sakura text-white rounded-xl font-bold hover:bg-sakura/90 transition-colors flex items-center justify-center">
                 {isSubmitting ? <Loader2 className="animate-spin" /> : '儲存'}
               </button>
             </div>

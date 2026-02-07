@@ -25,7 +25,7 @@ const AdoptionInfoPage: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 relative z-10">
           <h1 className="text-4xl font-bold text-earth mb-6">關於領養</h1>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            感謝您願意給流浪生命一個家。認養是一個終生的承諾，請在申請前詳細閱讀以下須知。
+            我們不只是救援，更是為幸福而努力。幫助那些無助的生命，讓他們重新獲得新的生活。
           </p>
         </div>
         <div className="absolute bottom-0 left-0 w-full">

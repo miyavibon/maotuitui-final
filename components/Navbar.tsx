@@ -22,18 +22,20 @@ const Navbar: React.FC<NavbarProps> = ({ currentPage, setPage, isAdmin, onLogout
     { label: '聯絡我們', page: Page.Contact },
   ];
 
+  const LOGO_URL = "https://firebasestorage.googleapis.com/v0/b/maotuitui-love.firebasestorage.app/o/LOGO.png?alt=media&token=b5b4c92b-339b-482e-9655-97f738536e4f";
+
   return (
     <nav className="fixed top-0 w-full bg-cream/90 backdrop-blur-md z-50 border-b border-sakura/10 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
+        <div className="flex justify-between items-center h-24 md:h-28">
           <div 
             className="flex-shrink-0 flex items-center cursor-pointer py-2" 
             onClick={() => setPage(Page.Home)}
           >
             <img 
-              src="https://firebasestorage.googleapis.com/v0/b/maotuitui-love.firebasestorage.app/o/%E5%B8%82%E9%9B%86%E9%A0%90%E5%91%8A-01.png?alt=media&token=30838c48-04df-4566-98d2-dbe7931a6e5e" 
+              src={LOGO_URL} 
               alt="毛腿腿 Logo" 
-              className="h-10 md:h-14 w-auto object-contain" 
+              className="h-14 md:h-20 w-auto object-contain transition-all duration-300 hover:scale-105" 
             />
           </div>
 
@@ -65,7 +67,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentPage, setPage, isAdmin, onLogout
           {/* Mobile menu button */}
           <div className="md:hidden flex items-center">
             <button onClick={() => setIsOpen(!isOpen)} className="text-sakura p-2 rounded-md">
-              {isOpen ? <X size={28} /> : <Menu size={28} />}
+              {isOpen ? <X size={32} /> : <Menu size={32} />}
             </button>
           </div>
         </div>
@@ -73,13 +75,13 @@ const Navbar: React.FC<NavbarProps> = ({ currentPage, setPage, isAdmin, onLogout
 
       {/* Mobile Navigation */}
       {isOpen && (
-        <div className="md:hidden bg-cream border-t border-sakura/10">
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+        <div className="md:hidden bg-cream border-t border-sakura/10 animate-in fade-in slide-in-from-top-4 duration-300">
+          <div className="px-2 pt-2 pb-6 space-y-1 sm:px-3">
             {navItems.map((item) => (
               <button
                 key={item.page}
                 onClick={() => { setPage(item.page); setIsOpen(false); }}
-                className={`block w-full text-left px-3 py-3 rounded-md text-base font-medium ${
+                className={`block w-full text-left px-4 py-4 rounded-xl text-lg font-medium ${
                   currentPage === item.page ? 'text-sakura bg-sakura/5 font-bold' : 'text-gray-600'
                 }`}
               >
@@ -87,7 +89,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentPage, setPage, isAdmin, onLogout
               </button>
             ))}
             {isAdmin && (
-              <button onClick={onLogout} className="block w-full text-left px-3 py-3 rounded-md text-base font-medium text-red-500">
+              <button onClick={onLogout} className="block w-full text-left px-4 py-4 rounded-xl text-lg font-medium text-red-500">
                 管理員登出
               </button>
             )}

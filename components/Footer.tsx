@@ -9,6 +9,8 @@ interface FooterProps {
 }
 
 const Footer: React.FC<FooterProps> = ({ setPage }) => {
+  const LOGO_URL = "https://firebasestorage.googleapis.com/v0/b/maotuitui-love.firebasestorage.app/o/LOGO.png?alt=media&token=b5b4c92b-339b-482e-9655-97f738536e4f";
+
   return (
     <footer className="relative bg-mimosa/20 pt-16 pb-8 overflow-hidden">
       <div className="absolute top-0 left-0 w-full rotate-180">
@@ -24,14 +26,13 @@ const Footer: React.FC<FooterProps> = ({ setPage }) => {
               onClick={() => setPage(Page.Home)}
             >
               <img 
-                src="https://firebasestorage.googleapis.com/v0/b/maotuitui-love.firebasestorage.app/o/%E5%B8%82%E9%9B%86%E9%A0%90%E5%91%8A-01.png?alt=media&token=30838c48-04df-4566-98d2-dbe7931a6e5e" 
+                src={LOGO_URL} 
                 alt="毛腿腿 Logo" 
-                className="h-14 w-auto object-contain"
+                className="h-24 w-auto object-contain transition-all hover:opacity-80"
               />
             </div>
-            <p className="text-gray-600 text-sm leading-relaxed">
-              「用一點點力量，換毛孩們一個大大的改變。」<br/>
-              自Betty愛媽救援開始，十八年來讓曾經受苦的生命，浪愛重生。
+            <p className="text-gray-600 text-sm leading-relaxed font-medium">
+              浪愛重生的奇蹟推手
             </p>
             <div className="flex flex-col space-y-3 pt-2">
               <a href="https://tr.ee/ocOCBt-y9K" target="_blank" rel="noopener noreferrer" className="flex items-center text-sm text-blue-600 hover:underline">

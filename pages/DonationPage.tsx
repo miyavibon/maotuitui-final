@@ -43,21 +43,17 @@ const DonationPage: React.FC<DonationPageProps> = ({ setPage }) => {
                 我們有許多生病、年幼、老殘及癌症的孩子，老弱重症的狗狗更需要營養液及罐頭補給。雖然我們每個月舉辦兩次認養會，但並非每個孩子都能順利找到家。
               </p>
               
-              {/* JKOPAY Donation Card - Clean Version */}
-              <div className="bg-white p-8 rounded-3xl shadow-sm border border-orange-100 flex flex-col items-center text-center mt-8">
-                <div className="mb-4">
-                  {/* FORCE REMOVE IMAGE: No img tag here */}
-                </div>
-                
+              {/* JKOPAY Donation Card - Updated URL & Styling */}
+              <div className="bg-white p-8 rounded-3xl shadow-sm border border-sakura/20 flex flex-col items-center text-center mt-8">
                 <h3 className="text-xl font-bold text-gray-800 mb-4">
                   使用街口支付快速捐款
                 </h3>
                 
                 <a 
-                  href="https://www.jkopay.com/transfer?j=Transfer:904090906" 
+                  href="https://service.jkopay.com/r/aweb?url=https://donation-app.jkos.com/public-welfare/charity-group/detail?id=223" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="bg-[#E63F3F] text-white px-8 py-3 rounded-full font-bold hover:bg-[#d62f2f] transition-colors inline-flex items-center gap-2"
+                  className="bg-[#E63F3F] text-white px-8 py-3 rounded-full font-bold hover:bg-[#d62f2f] transition-colors inline-flex items-center gap-2 shadow-lg"
                 >
                   前往街口支付連結
                   <ExternalLink size={18} />

@@ -21,23 +21,22 @@ const HomePage: React.FC<HomePageProps> = ({ setPage, dogs, news }) => {
             alt="毛腿腿園區生活" 
             className="w-full h-full object-cover brightness-[0.85]"
           />
-          <div className="absolute inset-0 bg-sakura/10"></div>
+          <div className="absolute inset-0 bg-black/20"></div>
         </div>
         <div className="relative z-10 text-center px-4 max-w-4xl">
-          <span className="inline-block bg-white/40 backdrop-blur-md text-earth px-4 py-1 rounded-full text-sm font-medium mb-4 border border-white/50">
-            毛腿腿，浪愛幸福，守護每一個生命
+          <span className="inline-block bg-white/40 backdrop-blur-md text-white px-4 py-1 rounded-full text-sm font-medium mb-4 border border-white/50">
+            浪愛重生的奇蹟推手
           </span>
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 drop-shadow-lg leading-tight">
-            每一隻受苦的毛孩<br/>
-            都值得一個「重生」的機會
+            毛腿腿浪愛幸福
           </h1>
-          <p className="text-lg md:text-xl text-white mb-8 max-w-2xl mx-auto drop-shadow-md">
-            十八年來，我們不曾停下腳步。從急難救助到安置照護，毛腿腿致力於為流浪生命尋找幸福的歸屬。
+          <p className="text-lg md:text-xl text-white mb-8 max-w-3xl mx-auto drop-shadow-md leading-relaxed">
+            從急難救助、完整醫療、安置照護、送養篩選、後續追蹤等，具備完善程序，讓曾經受苦的毛孩們，浪愛重生。
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button 
               onClick={() => setPage(Page.Adoption)}
-              className="bg-sakura text-white px-8 py-3 rounded-full font-bold text-lg shadow-xl hover:bg-mimosa hover:text-earth transition-all flex items-center justify-center"
+              className="bg-sakura text-white px-8 py-3 rounded-full font-bold text-lg shadow-xl hover:bg-sakura/90 transition-all flex items-center justify-center"
             >
               <Heart className="mr-2 fill-white" size={20} /> 帶我回家
             </button>
@@ -67,9 +66,9 @@ const HomePage: React.FC<HomePageProps> = ({ setPage, dogs, news }) => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             {[
-              { icon: <ShieldCheck size={40} />, title: '急難救助', desc: '當毛孩遭遇危難受傷，我們迅速出動。', color: 'bg-sakura/10 text-sakura' },
+              { icon: <ShieldCheck size={40} />, title: '急難救助', desc: '當毛孩遭遇危難受傷，我們迅速出動進行救援。', color: 'bg-sakura/10 text-sakura' },
               { icon: <Stethoscope size={40} />, title: '完善醫療', desc: '完整的醫療護理，無論常規檢查或緊急手術，健康為重。', color: 'bg-mimosa/30 text-earth' },
-              { icon: <HomeIcon size={40} />, title: '浪愛重生', desc: '嚴謹的送養篩選與後續追蹤，確保毛孩在新家幸福快樂。', color: 'bg-pink-100 text-pink-600' },
+              { icon: <HomeIcon size={40} />, title: '送養篩選', desc: '尋找最適合的家庭。我們的使命不僅僅是拯救毛孩，還要確保他們找到一個適合的家。', color: 'bg-pink-100 text-pink-600' },
             ].map((item, idx) => (
               <div key={idx} className="flex flex-col items-center text-center p-8 bg-white rounded-3xl shadow-sm hover:shadow-md transition-shadow group">
                 <div className={`w-24 h-24 ${item.color} rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform organic-radius`}>
@@ -139,8 +138,8 @@ const HomePage: React.FC<HomePageProps> = ({ setPage, dogs, news }) => {
               <div key={dog.id} className="bg-white rounded-[2rem] overflow-hidden shadow-sm group hover:shadow-xl transition-all border border-sakura/5">
                 <div className="relative h-72 overflow-hidden">
                   <img src={dog.imageUrl} alt={dog.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
-                  <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-sakura shadow-sm">
-                    {dog.gender} • {dog.age}
+                  <div className={`absolute top-4 right-4 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold shadow-sm ${dog.gender === '女生' ? 'bg-pink-100/90 text-pink-600' : 'bg-blue-100/90 text-blue-600'}`}>
+                    {dog.gender === '女生' ? '女生' : '男生'} • {dog.age}
                   </div>
                 </div>
                 <div className="p-8 text-center">
@@ -148,7 +147,7 @@ const HomePage: React.FC<HomePageProps> = ({ setPage, dogs, news }) => {
                   <p className="text-gray-600 text-sm mb-6 line-clamp-2">{dog.story}</p>
                   <button 
                     onClick={() => setPage(Page.Adoption)}
-                    className="w-full py-3 bg-sakura/10 text-sakura rounded-full font-bold hover:bg-sakura hover:text-white transition-all"
+                    className="w-full py-3 bg-sakura text-white rounded-full font-bold hover:bg-sakura/90 transition-all shadow-md"
                   >
                     認識 {dog.name}
                   </button>

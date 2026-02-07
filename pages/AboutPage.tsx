@@ -71,7 +71,7 @@ const AboutPage: React.FC = () => {
             {[
               { title: '完整醫療', desc: '提供完善的健康檢查與緊急手術，確保每一隻毛孩處於最佳狀態。' },
               { title: '安置照護', desc: '在協會中，每一隻毛孩都有一個安全、舒適、不再孤獨的家。' },
-              { title: '嚴格送養', desc: '進行嚴格的送養篩選，確保毛孩能夠找到最適合、最愛他們的家庭。' },
+              { title: '送養篩選', desc: '尋找最適合的家庭。我們的使命不僅僅是拯救毛孩，還要確保他們找到一個適合的家。' },
               { title: '後續追蹤', desc: '關懷不會隨著送養結束，我們會定期追蹤，陪伴孩子在家庭中幸福成長。' },
             ].map((item, idx) => (
               <div key={idx} className="bg-white p-8 rounded-3xl shadow-sm text-center flex flex-col items-center">
