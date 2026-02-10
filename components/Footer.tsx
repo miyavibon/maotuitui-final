@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Page } from '../types';
-import { Facebook, Heart, MapPin, HelpCircle } from 'lucide-react';
+import { Facebook, Heart, FileText, Ticket } from 'lucide-react';
 import { WaveDivider } from '../constants';
 
 interface FooterProps {
@@ -39,7 +39,7 @@ const Footer: React.FC<FooterProps> = ({ setPage }) => {
                 <Facebook size={18} className="mr-2 flex-shrink-0" /> 認養專用：毛腿腿認養團
               </a>
               <a href="https://tr.ee/nwKBRAtuyG" target="_blank" rel="noopener noreferrer" className="flex items-center text-sm text-blue-600 hover:underline">
-                <Facebook size={18} className="mr-2 flex-shrink-0" /> 贊助/志工：協會官方粉專
+                <Facebook size={18} className="mr-2 flex-shrink-0" /> 支持/志工：協會官方粉專
               </a>
             </div>
           </div>
@@ -48,17 +48,17 @@ const Footer: React.FC<FooterProps> = ({ setPage }) => {
           <div className="space-y-4">
             <h4 className="font-bold text-earth border-b border-sakura/20 pb-2">協會資訊</h4>
             <div className="space-y-3 text-sm text-gray-600">
-              <div className="flex items-start">
-                <MapPin size={16} className="mr-2 mt-1 text-sakura flex-shrink-0" />
-                <p>園區不開放現場參訪，認養請先填寫問卷預約。</p>
-              </div>
               <div className="flex items-center">
                 <Heart size={16} className="mr-2 text-sakura flex-shrink-0" />
                 <p>台內團字第1090054102號</p>
               </div>
               <div className="flex items-center">
-                <HelpCircle size={16} className="mr-2 text-sakura flex-shrink-0" />
-                <p>衛部救字第1121362952號</p>
+                <FileText size={16} className="mr-2 text-sakura flex-shrink-0" />
+                <p>統一編號 87518333</p>
+              </div>
+              <div className="flex items-center">
+                <Ticket size={16} className="mr-2 text-sakura flex-shrink-0" />
+                <p>毛腿腿發票愛心碼 991314</p>
               </div>
             </div>
           </div>

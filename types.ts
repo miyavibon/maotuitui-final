@@ -26,7 +26,13 @@ export interface NewsItem {
   title: string;
   content: string;
   date: string;
-  imageUrl: string;
+  imageUrl?: string; // 保留以相容舊資料
+  images?: string[]; // 新增：支援多張圖片
+  tags?: string[];   // 新增：文章標籤 (如：公開徵信)
+  embeddedPdfs?: {   // 新增：嵌入 PDF
+    title: string;
+    url: string;
+  }[];
 }
 
 export interface DonationReceipt {

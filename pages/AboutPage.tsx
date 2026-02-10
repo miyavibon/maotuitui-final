@@ -93,11 +93,12 @@ const AboutPage: React.FC = () => {
             <h2 className="text-2xl font-bold text-earth mb-6">社團法人毛腿腿浪愛幸福協會</h2>
             <div className="space-y-2 text-gray-500 text-lg">
                 <p>台內團字第1090054102號</p>
-                <p>衛部救字第1121362952號</p>
+                <p>統一編號 87518333</p>
+                <p>毛腿腿發票愛心碼 991314</p>
             </div>
             <div className="mt-12 p-8 bg-sakura/5 rounded-[2rem] border border-sakura/10">
                 <p className="text-gray-600 leading-loose">
-                    如果您也被我們的故事感動，請考慮贊助我們。您的支持將直接轉化為拯救生命的能量，讓每一位毛孩都能夠浪愛重生。
+                    如果您也被我們的故事感動，請考慮支持我們。您的支持將直接轉化為拯救生命的能量，讓每一位毛孩都能夠浪愛重生。
                 </p>
             </div>
         </div>

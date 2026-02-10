@@ -159,7 +159,7 @@ const HomePage: React.FC<HomePageProps> = ({ setPage, dogs, news }) => {
           <div className="text-center mt-12">
             <button 
               onClick={() => setPage(Page.Adoption)}
-              className="px-8 py-3 bg-earth text-white rounded-full font-bold hover:bg-earth/90 transition-all shadow-lg"
+              className="px-8 py-3 bg-sakura text-white rounded-full font-bold hover:bg-sakura/90 transition-all shadow-lg"
             >
               查看所有認養狗狗
             </button>

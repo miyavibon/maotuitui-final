@@ -34,14 +34,36 @@ const DonationPage: React.FC<DonationPageProps> = ({ setPage }) => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           {/* Donation Appeal */}
           <div className="space-y-8">
-            <h2 className="text-3xl font-bold text-earth">為什麼需要您的支持？</h2>
+            <h2 className="text-3xl font-bold text-earth leading-normal">為什麼需要您的支持？<br/><span className="text-2xl">—— 讓愛延續，永不放棄</span></h2>
             <div className="prose prose-sakura text-gray-600 leading-loose space-y-6">
               <p>
-                毛腿腿浪愛幸福協會感謝大家的支持，讓我們救助了至少 5000 隻狗狗。園區每月飼料用量約 160 包（15kg），加上處方飼料與保健品，每月開銷極大。
+                毛腿腿浪愛幸福協會至今已救援超過 <strong>5000</strong> 個生命。這條救援路上，我們始終堅持「不放棄重症、不拋棄老弱」，但這份堅持背後，是每月沉重的開銷壓力：
               </p>
-              <p>
-                我們有許多生病、年幼、老殘及癌症的孩子，老弱重症的狗狗更需要營養液及罐頭補給。雖然我們每個月舉辦兩次認養會，但並非每個孩子都能順利找到家。
-              </p>
+              
+              <ul className="list-none space-y-4 pl-0">
+                <li className="flex items-start">
+                  <span className="text-sakura font-bold mr-3 text-xl mt-1">•</span>
+                  <span><strong>醫療重擔：</strong>針對癌症、腫瘤、車禍重傷的孩子，我們堅持給予最好的醫療與手術。近年醫療支出已突破數百萬，我們始終在與龐大的醫藥費賽跑。</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-sakura font-bold mr-3 text-xl mt-1">•</span>
+                  <span><strong>伙食開銷：</strong>園區每月消耗超過 <strong>160 包</strong> 大型飼料，加上老犬專用的處方糧與保健品，讓孩子們吃飽穿暖是我們最大的挑戰。</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-sakura font-bold mr-3 text-xl mt-1">•</span>
+                  <span><strong>預防醫療：</strong>為杜絕心絲蟲與壁蝨，園區全面定期投予一錠除與犬心寶，這筆龐大的預防藥費絕不能省。</span>
+                </li>
+              </ul>
+
+              <div className="bg-sakura/5 p-6 rounded-2xl border-l-4 border-sakura my-6">
+                <p className="mb-4 font-medium text-gray-700">
+                    我們不怕辛苦，只怕沒有資源能救牠們。<br />
+                    即使是一包飼料的錢、一次看診的費用，都是毛孩活下去的希望。
+                </p>
+                <p className="font-bold text-xl text-sakura">
+                    請支持毛腿腿，成為這些孩子背後最強大的守護天使！
+                </p>
+              </div>
               
               {/* JKOPAY Donation Card - Updated URL & Styling */}
               <div className="bg-white p-8 rounded-3xl shadow-sm border border-sakura/20 flex flex-col items-center text-center mt-8">
@@ -63,16 +85,6 @@ const DonationPage: React.FC<DonationPageProps> = ({ setPage }) => {
                   手機用戶點擊可直接開啟街口 App
                 </p>
               </div>
-
-              <div className="bg-white p-6 rounded-3xl border border-sakura/20 shadow-sm mt-8">
-                <p className="font-bold text-sakura mb-2">每月龐大開支包含：</p>
-                <ul className="grid grid-cols-2 gap-2 text-sm">
-                  <li>• 飼料與營養品 (約20萬+)</li>
-                  <li>• 醫療救助費用</li>
-                  <li>• 十合一、狂犬病疫苗</li>
-                  <li>• 內外驅蟲藥劑</li>
-                </ul>
-              </div>
             </div>
             
             <div className="space-y-4">
@@ -80,7 +92,7 @@ const DonationPage: React.FC<DonationPageProps> = ({ setPage }) => {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <a href="https://tr.ee/nwKBRAtuyG" target="_blank" rel="noopener noreferrer" className="p-4 bg-white rounded-2xl border border-gray-100 flex items-center hover:bg-sakura/5 transition-colors">
                   <div className="w-10 h-10 bg-sakura/10 text-sakura rounded-full flex items-center justify-center mr-3"><Heart size={20} /></div>
-                  <span className="text-sm font-bold text-gray-700">贊助義賣 & 志工招募</span>
+                  <span className="text-sm font-bold text-gray-700">支持義賣 & 志工招募</span>
                 </a>
                 <a 
                   href={RECEIPT_FORM_URL} 
