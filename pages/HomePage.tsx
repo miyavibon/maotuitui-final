@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Page, Dog, NewsItem } from '../types';
 import { WaveDivider, HandDoodle, COLORS } from '../constants';
@@ -40,12 +39,14 @@ const HomePage: React.FC<HomePageProps> = ({ setPage, dogs, news }) => {
             >
               <Heart className="mr-2 fill-white" size={20} /> 帶我回家
             </button>
+            {/* 暫時隱藏首頁上方「支持我們」按鈕
             <button 
               onClick={() => setPage(Page.Donation)}
               className="bg-white text-sakura border-2 border-sakura/30 px-8 py-3 rounded-full font-bold text-lg shadow-xl hover:bg-sakura hover:text-white transition-all"
             >
               支持我們
             </button>
+            */}
           </div>
         </div>
         <div className="absolute bottom-0 left-0 w-full z-20">
@@ -167,7 +168,7 @@ const HomePage: React.FC<HomePageProps> = ({ setPage, dogs, news }) => {
         </div>
       </section>
 
-      {/* Call to Action */}
+      {/* 暫時隱藏首頁下方整個粉紅色捐款區塊
       <section className="py-20 bg-sakura text-white relative overflow-hidden">
         <div className="absolute top-0 left-0 w-full">
             <WaveDivider color="#fffcf9" flip />
@@ -185,6 +186,7 @@ const HomePage: React.FC<HomePageProps> = ({ setPage, dogs, news }) => {
           </button>
         </div>
       </section>
+      */}
     </div>
   );
 };
