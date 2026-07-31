@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { WaveDivider, HandDoodle, COLORS } from '../constants';
 
@@ -10,7 +9,7 @@ const AboutPage: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 relative z-10 text-center">
           <h1 className="text-4xl font-bold text-earth mb-6">關於我們</h1>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
-            社團法人毛腿腿浪愛幸福協會：一個持續十八年的愛心奇蹟
+            社團法人毛腿腿浪愛幸福協會：一個持續二十年的愛心奇蹟
           </p>
         </div>
         <div className="absolute bottom-0 left-0 w-full">
@@ -33,10 +32,16 @@ const AboutPage: React.FC = () => {
             <div className="space-y-6">
               <h2 className="text-3xl font-bold text-earth">我們的故事</h2>
               <p className="text-gray-600 leading-loose">
-                毛腿腿從Betty愛媽個人救援計畫開始，至今已有近18年的歷史。這條路走來並不輕鬆，但我們堅定奉獻，為了拯救每一條微小的生命，我們無私奔走。
+                毛腿腿從現任理事長 Betty 愛媽（王婷鈺）的個人救援計畫開始，至今已有近18年的歷史。這條路走來並不輕鬆，但我們堅定奉獻，為了拯救每一條微小的生命，我們無私奔走。
               </p>
               <p className="text-gray-600 leading-loose">
                 截至目前，我們已經幫助超過 5000 隻需要幫助的毛孩找到家，救援的犬貓數量累計近萬隻。園區收容多為熟齡、傷殘之中小型犬。
+              </p>
+              
+              {/* 新增的協會宗旨區塊 */}
+              <h3 className="text-2xl font-bold text-earth pt-4">協會宗旨</h3>
+              <p className="text-gray-600 leading-loose">
+                以透過公眾教育宣導，深化國人對動物生命尊重；辦理動物救援、治療、安置、收容，提供動物庇護所及完善照護，拉近人類與動物彼此距離，增進社會融合與快樂為宗旨。
               </p>
             </div>
           </div>
@@ -90,15 +95,21 @@ const AboutPage: React.FC = () => {
       <section className="py-20 bg-cream">
         <div className="max-w-4xl mx-auto px-4 text-center">
             <div className="mb-8 inline-block"><HandDoodle.Paw /></div>
-            <h2 className="text-2xl font-bold text-earth mb-6">社團法人毛腿腿浪愛幸福協會</h2>
-            <div className="space-y-2 text-gray-500 text-lg">
-                <p>台內團字第1090054102號</p>
-                <p>統一編號 87518333</p>
-                <p>毛腿腿發票愛心碼 991314</p>
+            <h2 className="text-2xl font-bold text-earth mb-6">協會法定公開資訊</h2>
+            
+            {/* 更新後的法定公開資訊區塊 */}
+            <div className="space-y-3 text-gray-600 text-lg max-w-lg mx-auto text-left bg-white p-8 rounded-3xl shadow-sm border border-sakura/10">
+                <p><strong className="text-earth">法人名稱：</strong>社團法人毛腿腿浪愛幸福協會</p>
+                <p><strong className="text-earth">代表法人之理事：</strong>王婷鈺</p>
+                <p><strong className="text-earth">主事務所地址：</strong>桃園市觀音區環中路 299 號</p>
+                <p><strong className="text-earth">設立許可：</strong>內政部中華民國 109 年 10 月 6 日台內團字第 1090054102 號函</p>
+                <p><strong className="text-earth">統一編號：</strong>87518333</p>
+                <p><strong className="text-earth">發票愛心碼：</strong>991314</p>
             </div>
+
             <div className="mt-12 p-8 bg-sakura/5 rounded-[2rem] border border-sakura/10">
                 <p className="text-gray-600 leading-loose">
-                    如果您也被我們的故事感動，請考慮支持我們。您的支持將直接轉化為拯救生命的能量，讓每一位毛孩都能夠浪愛重生。
+                  如果您也被我們的故事感動，請考慮支持我們。您的支持將直接轉化為拯救生命的能量，讓每一位毛孩都能夠浪愛重生。
                 </p>
             </div>
         </div>
