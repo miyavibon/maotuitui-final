@@ -32,7 +32,7 @@ const AboutPage: React.FC = () => {
             <div className="space-y-6">
               <h2 className="text-3xl font-bold text-earth">我們的故事</h2>
               <p className="text-gray-600 leading-loose">
-                毛腿腿從現任理事長 Betty 愛媽（王婷鈺）的個人救援計畫開始，至今已有近18年的歷史。這條路走來並不輕鬆，但我們堅定奉獻，為了拯救每一條微小的生命，我們無私奔走。
+                毛腿腿從現任理事長 Betty 愛媽（王婷鈺）的個人救援計畫開始，至今已有近20年的歷史。這條路走來並不輕鬆，但我們堅定奉獻，為了拯救每一條微小的生命，我們無私奔走。
               </p>
               <p className="text-gray-600 leading-loose">
                 截至目前，我們已經幫助超過 5000 隻需要幫助的毛孩找到家，救援的犬貓數量累計近萬隻。園區收容多為熟齡、傷殘之中小型犬。
