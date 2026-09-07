@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Page, Dog, NewsItem } from '../types';
 import { WaveDivider, HandDoodle, COLORS } from '../constants';
@@ -16,9 +17,10 @@ const HomePage: React.FC<HomePageProps> = ({ setPage, dogs, news }) => {
       <section className="relative h-[80vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img 
-            src="https://firebasestorage.googleapis.com/v0/b/maotuitui-love.firebasestorage.app/o/LINE_ALBUM_2023%E7%B2%BE%E9%81%B8%EF%BC%88%E9%9A%A8%E4%BE%BF%E9%81%B8%E7%9A%84_260205_5.jpg?alt=media&token=486b02e3-b9f1-40af-8405-64eb9f6c6a58" 
+            src="https://firebasestorage.googleapis.com/v0/b/maotuitui-love.firebasestorage.app/o/2356673.png?alt=media&token=f280bbac-8d75-44b3-abfb-8bb2ba6246f7" 
             alt="毛腿腿園區生活" 
             className="w-full h-full object-cover brightness-[0.85]"
+            referrerPolicy="no-referrer"
           />
           <div className="absolute inset-0 bg-black/20"></div>
         </div>
@@ -39,14 +41,12 @@ const HomePage: React.FC<HomePageProps> = ({ setPage, dogs, news }) => {
             >
               <Heart className="mr-2 fill-white" size={20} /> 帶我回家
             </button>
-            {/* 暫時隱藏首頁上方「支持我們」按鈕
             <button 
               onClick={() => setPage(Page.Donation)}
               className="bg-white text-sakura border-2 border-sakura/30 px-8 py-3 rounded-full font-bold text-lg shadow-xl hover:bg-sakura hover:text-white transition-all"
             >
               支持我們
             </button>
-            */}
           </div>
         </div>
         <div className="absolute bottom-0 left-0 w-full z-20">
@@ -106,7 +106,7 @@ const HomePage: React.FC<HomePageProps> = ({ setPage, dogs, news }) => {
             {news.slice(0, 2).map((item) => (
               <div key={item.id} className="bg-white rounded-3xl overflow-hidden shadow-sm flex flex-col sm:flex-row group cursor-pointer" onClick={() => setPage(Page.News)}>
                 <div className="sm:w-1/3 h-48 sm:h-auto overflow-hidden">
-                  <img src={item.imageUrl} alt={item.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                  <img src={item.imageUrl} alt={item.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" referrerPolicy="no-referrer" />
                 </div>
                 <div className="sm:w-2/3 p-6 flex flex-col justify-between">
                   <div>
@@ -138,7 +138,7 @@ const HomePage: React.FC<HomePageProps> = ({ setPage, dogs, news }) => {
             {dogs.slice(0, 3).map((dog) => (
               <div key={dog.id} className="bg-white rounded-[2rem] overflow-hidden shadow-sm group hover:shadow-xl transition-all border border-sakura/5">
                 <div className="relative h-72 overflow-hidden">
-                  <img src={dog.imageUrl} alt={dog.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                  <img src={dog.imageUrl} alt={dog.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" referrerPolicy="no-referrer" />
                   <div className={`absolute top-4 right-4 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold shadow-sm ${dog.gender === '女生' ? 'bg-pink-100/90 text-pink-600' : 'bg-blue-100/90 text-blue-600'}`}>
                     {dog.gender === '女生' ? '女生' : '男生'} • {dog.age}
                   </div>
@@ -168,7 +168,7 @@ const HomePage: React.FC<HomePageProps> = ({ setPage, dogs, news }) => {
         </div>
       </section>
 
-      {/* 暫時隱藏首頁下方整個粉紅色捐款區塊
+      {/* Call to Action */}
       <section className="py-20 bg-sakura text-white relative overflow-hidden">
         <div className="absolute top-0 left-0 w-full">
             <WaveDivider color="#fffcf9" flip />
@@ -186,7 +186,6 @@ const HomePage: React.FC<HomePageProps> = ({ setPage, dogs, news }) => {
           </button>
         </div>
       </section>
-      */}
     </div>
   );
 };
