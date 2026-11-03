@@ -162,7 +162,7 @@ const HomePage: React.FC<HomePageProps> = ({ setPage, dogs, news }) => {
               onClick={() => setPage(Page.Adoption)}
               className="px-8 py-3 bg-sakura text-white rounded-full font-bold hover:bg-sakura/90 transition-all shadow-lg"
             >
-              查看所有認養狗狗
+              查看所有待認養毛孩
             </button>
           </div>
         </div>
