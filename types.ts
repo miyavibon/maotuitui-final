@@ -13,9 +13,12 @@ export enum Page {
 export interface Dog {
   id: string;
   name: string;
+  species?: '狗' | '貓';
   gender: '男生' | '女生';
   age: string;
-  story: string;
+  breed?: string;        // 品種 (如: 米克斯、柴犬、虎斑貓)
+  personality?: string;  // 個性 (如: 親人溫和、活潑好動、慢熟)
+  story: string;         // 文字說明 / 故事
   imageUrl: string;
   isAdopted: boolean;
   createdAt: number;
