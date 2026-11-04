@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Page, Dog, NewsItem } from '../types';
-import { WaveDivider, HandDoodle, COLORS } from '../constants';
+import { WaveDivider, HandDoodle, COLORS, formatDisplayGender } from '../constants';
 import { Heart, ArrowRight, ShieldCheck, Stethoscope, Home as HomeIcon } from 'lucide-react';
 
 interface HomePageProps {
@@ -135,26 +135,29 @@ const HomePage: React.FC<HomePageProps> = ({ setPage, dogs, news }) => {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {dogs.slice(0, 3).map((dog) => (
-              <div key={dog.id} className="bg-white rounded-[2rem] overflow-hidden shadow-sm group hover:shadow-xl transition-all border border-sakura/5">
-                <div className="relative h-72 overflow-hidden">
-                  <img src={dog.imageUrl} alt={dog.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" referrerPolicy="no-referrer" />
-                  <div className={`absolute top-4 right-4 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold shadow-sm ${dog.gender === '女生' ? 'bg-pink-100/90 text-pink-600' : 'bg-blue-100/90 text-blue-600'}`}>
-                    {dog.gender === '女生' ? '女生' : '男生'} • {dog.age}
+            {dogs.slice(0, 3).map((dog) => {
+              const displayGender = formatDisplayGender(dog.gender);
+              return (
+                <div key={dog.id} className="bg-white rounded-[2rem] overflow-hidden shadow-sm group hover:shadow-xl transition-all border border-sakura/5">
+                  <div className="relative h-72 overflow-hidden">
+                    <img src={dog.imageUrl} alt={dog.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" referrerPolicy="no-referrer" />
+                    <div className={`absolute top-4 right-4 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold shadow-sm ${displayGender === '女生' ? 'bg-pink-100/90 text-pink-600' : 'bg-blue-100/90 text-blue-600'}`}>
+                      {displayGender} • {dog.age}
+                    </div>
+                  </div>
+                  <div className="p-8 text-center">
+                    <h3 className="text-2xl font-bold mb-3 text-gray-800">{dog.name}</h3>
+                    <p className="text-gray-600 text-sm mb-6 line-clamp-2">{dog.story}</p>
+                    <button 
+                      onClick={() => setPage(Page.Adoption)}
+                      className="w-full py-3 bg-sakura text-white rounded-full font-bold hover:bg-sakura/90 transition-all shadow-md"
+                    >
+                      認識 {dog.name}
+                    </button>
                   </div>
                 </div>
-                <div className="p-8 text-center">
-                  <h3 className="text-2xl font-bold mb-3 text-gray-800">{dog.name}</h3>
-                  <p className="text-gray-600 text-sm mb-6 line-clamp-2">{dog.story}</p>
-                  <button 
-                    onClick={() => setPage(Page.Adoption)}
-                    className="w-full py-3 bg-sakura text-white rounded-full font-bold hover:bg-sakura/90 transition-all shadow-md"
-                  >
-                    認識 {dog.name}
-                  </button>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
 
           <div className="text-center mt-12">

@@ -8,8 +8,9 @@ import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { 
   Plus, Edit2, Trash2, X, Heart, Info, Upload, Loader2, 
   Dog as DogIcon, Cat as CatIcon, FileSpreadsheet, Download, 
-  CheckCircle2, AlertCircle, Sparkles, FileText, ArrowRight
+  CheckCircle2, AlertCircle, Sparkles, FileText, ArrowRight, Search
 } from 'lucide-react';
+import { formatDisplayGender } from '../constants';
 
 interface AdoptionPageProps {
   dogs: Dog[];
@@ -33,6 +34,7 @@ const DEFAULT_CAT_IMG = 'https://images.unsplash.com/photo-1514888286974-6c03e2c
 
 const AdoptionPage: React.FC<AdoptionPageProps> = ({ dogs, isAdmin }) => {
   const [selectedSpecies, setSelectedSpecies] = useState<'狗' | '貓'>('狗');
+  const [searchQuery, setSearchQuery] = useState('');
   
   // 個別新增 / 編輯 Modal 狀態
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -54,10 +56,18 @@ const AdoptionPage: React.FC<AdoptionPageProps> = ({ dogs, isAdmin }) => {
   const dogCount = dogs.filter(pet => (pet.species || '狗') === '狗').length;
   const catCount = dogs.filter(pet => pet.species === '貓').length;
 
-  // 依當前選中頁籤篩選清單
+  // 依當前選中頁籤與搜尋關鍵字篩選清單（搜尋：名字、品種、個性）
   const filteredDogs = dogs.filter(pet => {
     const species = pet.species || '狗';
-    return species === selectedSpecies;
+    if (species !== selectedSpecies) return false;
+
+    if (!searchQuery.trim()) return true;
+    const q = searchQuery.trim().toLowerCase();
+    const nameMatch = (pet.name || '').toLowerCase().includes(q);
+    const breedMatch = (pet.breed || '').toLowerCase().includes(q);
+    const personalityMatch = (pet.personality || '').toLowerCase().includes(q);
+
+    return nameMatch || breedMatch || personalityMatch;
   });
 
   const handleDelete = async (id: string) => {
@@ -411,18 +421,73 @@ const AdoptionPage: React.FC<AdoptionPageProps> = ({ dogs, isAdmin }) => {
           </div>
         </div>
 
-        {/* 3. 列表顯示邏輯：依頁籤篩選，排版樣式保持不變 */}
+        {/* 2. 搜尋框：讓使用者透過名字、品種或個性關鍵字快速篩選 */}
+        <div className="mb-10 max-w-xl mx-auto sm:mx-0">
+          <div className="relative flex items-center">
+            <div className="absolute left-4 pointer-events-none text-stone-400 flex items-center">
+              <Search size={19} />
+            </div>
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder={`在「找${selectedSpecies === '狗' ? '狗狗' : '貓咪'}」中搜尋名字、品種或個性（如：小乖、米克斯、親人）...`}
+              className="w-full pl-11 pr-10 py-3.5 bg-white rounded-2xl border border-stone-200/90 shadow-sm text-stone-700 placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-sakura focus:border-transparent transition-all text-sm sm:text-base"
+            />
+            {searchQuery && (
+              <button
+                type="button"
+                onClick={() => setSearchQuery('')}
+                className="absolute right-3.5 p-1 text-stone-400 hover:text-stone-600 rounded-full hover:bg-stone-100 transition-colors cursor-pointer"
+                title="清除搜尋"
+              >
+                <X size={18} />
+              </button>
+            )}
+          </div>
+          {searchQuery && (
+            <div className="mt-2.5 px-2 flex items-center justify-between text-xs text-stone-500">
+              <span>
+                搜尋「<strong className="text-sakura">{searchQuery}</strong>」的結果：共找到 {filteredDogs.length} 隻毛孩
+              </span>
+              <button
+                type="button"
+                onClick={() => setSearchQuery('')}
+                className="text-sakura hover:underline font-bold cursor-pointer"
+              >
+                清除條件
+              </button>
+            </div>
+          )}
+        </div>
+
+        {/* 3. 列表顯示邏輯：依頁籤篩選與搜尋，排版樣式保持不變 */}
         {filteredDogs.length === 0 ? (
           <div className="text-center py-20 bg-white/70 backdrop-blur-sm rounded-[2.5rem] border border-dashed border-stone-200 p-8 max-w-lg mx-auto shadow-sm">
             <div className="w-16 h-16 mx-auto mb-4 bg-sakura/10 text-sakura rounded-full flex items-center justify-center">
-              {selectedSpecies === '狗' ? <DogIcon size={32} /> : <CatIcon size={32} />}
+              {searchQuery ? <Search size={30} /> : (selectedSpecies === '狗' ? <DogIcon size={32} /> : <CatIcon size={32} />)}
             </div>
             <h3 className="text-xl font-bold text-earth mb-2">
-              目前暫無待認養的{selectedSpecies === '狗' ? '狗狗' : '貓咪'}
+              {searchQuery 
+                ? `找不到符合「${searchQuery}」的${selectedSpecies === '狗' ? '狗狗' : '貓咪'}`
+                : `目前暫無待認養的${selectedSpecies === '狗' ? '狗狗' : '貓咪'}`
+              }
             </h3>
-            <p className="text-stone-500 text-sm leading-relaxed">
-              歡迎隨時關注我們的粉絲專頁與最新消息，或與我們聯繫了解更多毛孩資訊！
+            <p className="text-stone-500 text-sm leading-relaxed mb-6">
+              {searchQuery
+                ? '建議檢查關鍵字拼寫，或嘗試搜尋名字、品種（例如米克斯、柴犬）或個性（例如溫和、活潑）'
+                : '歡迎隨時關注我們的粉絲專頁與最新消息，或與我們聯繫了解更多毛孩資訊！'
+              }
             </p>
+            {searchQuery && (
+              <button
+                type="button"
+                onClick={() => setSearchQuery('')}
+                className="px-6 py-2.5 bg-sakura text-white rounded-full font-bold text-sm shadow hover:bg-sakura/90 transition-all cursor-pointer"
+              >
+                清除搜尋條件
+              </button>
+            )}
           </div>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
@@ -467,8 +532,8 @@ const AdoptionPage: React.FC<AdoptionPageProps> = ({ dogs, isAdmin }) => {
                     </div>
                   )}
                   <div className="absolute bottom-4 left-4 flex flex-wrap gap-1.5">
-                    <span className={`px-3 py-1 rounded-full text-xs font-bold shadow-sm ${dog.gender === '女生' ? 'bg-pink-100/90 text-pink-600' : 'bg-blue-100/90 text-blue-600'}`}>
-                      {dog.gender === '女生' ? '女生 (母)' : '男生 (公)'} • {dog.age}
+                    <span className={`px-3 py-1 rounded-full text-xs font-bold shadow-sm ${formatDisplayGender(dog.gender) === '女生' ? 'bg-pink-100/90 text-pink-600' : 'bg-blue-100/90 text-blue-600'}`}>
+                      {formatDisplayGender(dog.gender)} • {dog.age}
                     </span>
                     {dog.breed && (
                       <span className="px-2.5 py-1 rounded-full text-xs font-bold bg-white/90 text-stone-700 shadow-sm backdrop-blur-xs">
@@ -524,8 +589,8 @@ const AdoptionPage: React.FC<AdoptionPageProps> = ({ dogs, isAdmin }) => {
                   <span className="bg-earth/10 text-earth px-3 py-1 rounded-full text-sm font-bold">
                     {selectedDog.species || '狗'}
                   </span>
-                  <span className={`px-3 py-1 rounded-full text-sm font-bold ${selectedDog.gender === '女生' ? 'bg-pink-100 text-pink-600' : 'bg-blue-100 text-blue-600'}`}>
-                    {selectedDog.gender === '女生' ? '女生 (母)' : '男生 (公)'}
+                  <span className={`px-3 py-1 rounded-full text-sm font-bold ${formatDisplayGender(selectedDog.gender) === '女生' ? 'bg-pink-100 text-pink-600' : 'bg-blue-100 text-blue-600'}`}>
+                    {formatDisplayGender(selectedDog.gender)}
                   </span>
                   <span className="bg-stone-100 text-stone-700 px-3 py-1 rounded-full text-sm font-bold">{selectedDog.age}</span>
                   {selectedDog.breed && (
@@ -616,10 +681,10 @@ const AdoptionPage: React.FC<AdoptionPageProps> = ({ dogs, isAdmin }) => {
                   <input required type="text" placeholder="例：小乖" value={editDog?.name || ''} onChange={e => setEditDog({...editDog, name: e.target.value})} className="w-full px-4 py-2 rounded-xl border border-gray-200 focus:ring-2 focus:ring-sakura outline-none" />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">性別 (公/母)</label>
-                  <select value={editDog?.gender || '男生'} onChange={e => setEditDog({...editDog, gender: e.target.value as any})} className="w-full px-4 py-2 rounded-xl border border-gray-200 focus:ring-2 focus:ring-sakura outline-none">
-                    <option value="男生">男生 (公)</option>
-                    <option value="女生">女生 (母)</option>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">性別</label>
+                  <select value={formatDisplayGender(editDog?.gender)} onChange={e => setEditDog({...editDog, gender: e.target.value as any})} className="w-full px-4 py-2 rounded-xl border border-gray-200 focus:ring-2 focus:ring-sakura outline-none">
+                    <option value="男生">男生</option>
+                    <option value="女生">女生</option>
                   </select>
                 </div>
               </div>
@@ -869,9 +934,9 @@ const AdoptionPage: React.FC<AdoptionPageProps> = ({ dogs, isAdmin }) => {
                           <td className="p-3 text-stone-600">{row.age}</td>
                           <td className="p-3">
                             <span className={`px-2 py-0.5 rounded-full text-[11px] font-bold ${
-                              row.gender === '女生' ? 'bg-pink-100 text-pink-600' : 'bg-blue-100 text-blue-600'
+                              formatDisplayGender(row.gender) === '女生' ? 'bg-pink-100 text-pink-600' : 'bg-blue-100 text-blue-600'
                             }`}>
-                              {row.gender === '女生' ? '母 (女)' : '公 (男)'}
+                              {formatDisplayGender(row.gender)}
                             </span>
                           </td>
                           <td className="p-3 text-stone-600">{row.breed || '-'}</td>
