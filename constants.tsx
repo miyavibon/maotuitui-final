@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 export const COLORS = {
@@ -11,7 +10,7 @@ export const COLORS = {
   beige: '#fce8a4'
 };
 
-export const WaveDivider = ({ flip = false, color = COLORS.cream }: { flip?: boolean, color?: string }) => (
+export const WaveDivider = ({ flip = false, color = COLORS.cream }: { flip?: boolean; color?: string }) => (
   <div className={`w-full overflow-hidden leading-[0] ${flip ? 'rotate-180' : ''}`} style={{ backgroundColor: 'transparent' }}>
     <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="relative block w-full h-[60px]">
       <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" fill={color}></path>
@@ -37,3 +36,19 @@ export const HandDoodle = {
     </svg>
   )
 };
+
+/**
+ * 將毛孩性別資料轉換為畫面顯示文字：
+ * 如果性別資料包含『公』或等於『男生(公)』，畫面上只顯示『男生』。
+ * 如果性別資料包含『母』或等於『女生(母)』，畫面上只顯示『女生』。
+ */
+export function formatDisplayGender(gender?: string): '男生' | '女生' {
+  if (!gender) return '男生';
+  if (gender.includes('母') || gender === '女生(母)') {
+    return '女生';
+  }
+  if (gender.includes('公') || gender === '男生(公)') {
+    return '男生';
+  }
+  return gender === '女生' ? '女生' : '男生';
+}
