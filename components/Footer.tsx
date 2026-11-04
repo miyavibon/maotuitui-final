@@ -29,6 +29,7 @@ const Footer: React.FC<FooterProps> = ({ setPage }) => {
                 src={LOGO_URL} 
                 alt="毛腿腿 Logo" 
                 className="h-24 w-auto object-contain transition-all hover:opacity-80"
+                referrerPolicy="no-referrer"
               />
             </div>
             <p className="text-gray-600 text-sm leading-relaxed font-medium">

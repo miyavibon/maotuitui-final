@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Page } from '../types';
 import { Menu, X, LogOut, User } from 'lucide-react';
@@ -17,7 +18,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentPage, setPage, isAdmin, onLogout
     { label: '最新消息', page: Page.News },
     { label: '認養專區', page: Page.Adoption },
     { label: '關於領養', page: Page.AdoptionInfo },
-    // { label: '愛心捐款', page: Page.Donation }, // 暫時隱藏愛心捐款，日後把這行的 // 刪掉就會恢復了
+    { label: '愛心捐款', page: Page.Donation },
     { label: '聯絡我們', page: Page.Contact },
   ];
 
@@ -35,6 +36,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentPage, setPage, isAdmin, onLogout
               src={LOGO_URL} 
               alt="毛腿腿 Logo" 
               className="h-14 md:h-20 w-auto object-contain transition-all duration-300 hover:scale-105" 
+              referrerPolicy="no-referrer"
             />
           </div>
 
