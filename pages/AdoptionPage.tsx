@@ -555,7 +555,7 @@ const AdoptionPage: React.FC<AdoptionPageProps> = ({ dogs, isAdmin }) => {
                       onClick={() => setSelectedDog(dog)}
                       className="w-full py-2 border-2 border-sakura/30 text-sakura rounded-full font-bold hover:bg-sakura hover:text-white transition-all text-sm cursor-pointer"
                     >
-                      閱讀牠的故事
+                      關於我
                     </button>
                   </div>
                 </div>
